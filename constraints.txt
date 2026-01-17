@@ -1,1 +1,9 @@
 numpy==2.3.0
+fastapi
+uvicorn
+fastapi
+uvicorn[standard]
+catboost
+pandas
+numpy
+scikit-learn
