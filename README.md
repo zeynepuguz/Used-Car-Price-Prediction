@@ -157,59 +157,34 @@ The trained models are exposed via a **FastAPI** service that returns a fair pri
 - **Health Check:** http://127.0.0.1:8000/health
 
 ---
+---
 
-## API Endpoints
+## Streamlit – Interactive Frontend
 
-### Health Check
+An interactive Streamlit application is built on top of the FastAPI backend to allow
+users to input vehicle details and instantly receive a fair price range.
 
-GET /health
+The interface communicates directly with the FastAPI `/predict` endpoint and displays
+quantile-based pricing results (Q25 / Q50 / Q75) in a clear and user-friendly layout.
 
-css
-Kodu kopyala
+---
 
-Response:
-```json
-{
-  "status": "ok"
-}
-Predict Fair Price Range
-bash
-Kodu kopyala
-POST /predict
-Request body:
+### Streamlit Interface – Main View
 
-json
-Kodu kopyala
-{
-  "car_model": "Clio",
-  "year": 2018,
-  "km": 85000,
-  "fuel": "Petrol",
-  "transmission": "Manual",
-  "tax": 150,
-  "mpg": 55.4,
-  "engineSize": 1.2
-}
-Response:
+![Streamlit Main Interface](graphics/image2.png)
 
-json
-Kodu kopyala
-{
-  "price_range": {
-    "min": 7204,
-    "recommended": 7204,
-    "max": 7470,
-    "currency": "GBP"
-  }
-}
-API Example Results
-Example 1 – Renault Clio
-Produces a narrow and confident price range for a mid-range vehicle.
+---
 
-Example 2 – Audi A3
-Lower price range reflecting age and mileage effects.
+### Streamlit Interface – Result & API Integration
+
+![Streamlit Result View](graphics/image3.png)
+
+---
+
+---
 
 Key Takeaways
+
 Realistic used car pricing behavior is captured
 
 Predictions are explainable at both global and individual levels
@@ -219,6 +194,7 @@ Quantile-based price ranges provide actionable guidance
 The system is suitable for real-world deployment
 
 Next Steps
+
 Streamlit-based interactive interface
 
 Dockerization
@@ -226,14 +202,13 @@ Dockerization
 Cloud deployment
 
 Technologies Used
+
 Python
-
 Pandas, NumPy
-
 CatBoost
-
 SHAP
-
 FastAPI
-
+Streamlit
 Matplotlib / Seaborn
+
+---
