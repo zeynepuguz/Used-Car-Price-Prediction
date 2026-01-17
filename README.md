@@ -183,23 +183,57 @@ quantile-based pricing results (Q25 / Q50 / Q75) in a clear and user-friendly la
 
 ---
 
-Key Takeaways
+Local Development & Deployment Notes
+Local Development (Codespaces / Local Machine)
 
-Gerçekçi ikinci el araç fiyatlama davranışı başarılı şekilde modellenmiştir.
+This project uses FastAPI as a backend service for model inference and Streamlit as a frontend user interface.
 
-Model tahminleri hem global hem de bireysel seviyede açıklanabilirdir.
+During local development, FastAPI and Streamlit are executed as separate processes.
 
-Kantil (quantile) tabanlı fiyat aralıkları, karar vericiler için aksiyon alınabilir çıktılar sunar.
+Start FastAPI Backend
+python -m uvicorn api_fastapi:app --app-dir fastapi --host 0.0.0.0 --port 8000
 
-Sistem, gerçek dünya kullanımına uygun olacak şekilde tasarlanmıştır.
+Start Streamlit Frontend
+streamlit run fastapi/streamlit_app.py
 
-Next Steps
 
-Streamlit tabanlı interaktif kullanıcı arayüzünün geliştirilmesi
+The Streamlit application communicates with the FastAPI backend via HTTP requests.
 
-Uygulamanın Docker ile konteynerleştirilmesi
+Deployment Considerations
 
-Bulut ortamına (cloud) deploy edilmesi
+Running FastAPI and Streamlit within the same container or process is acceptable for:
+
+Local development
+
+Demos
+
+Portfolio projects
+
+Proof-of-concept implementations
+
+For production deployments, it is recommended to deploy FastAPI as an independent service, such as:
+
+Render
+
+Railway
+
+Fly.io
+
+Google Cloud Run
+
+Streamlit should then consume the FastAPI service via a configurable API endpoint.
+
+In cloud environments (e.g. Streamlit Cloud), 127.0.0.1 or localhost must not be used as the API endpoint. Instead, the publicly accessible FastAPI service URL should be provided through environment variables.
+
+API Configuration
+
+The Streamlit application expects the FastAPI base URL to be defined via an environment variable:
+
+API_URL=http://<fastapi-service-url>
+
+
+This configuration enables seamless switching between local development and cloud deployment environments without modifying the application code.
+
 
 Technologies Used
 
@@ -217,13 +251,6 @@ FastAPI
 
 Streamlit
 
-Matplotlib
-
-Seaborn
-CatBoost
-SHAP
-FastAPI
-Streamlit
 Matplotlib / Seaborn
 
 ---
