@@ -185,26 +185,41 @@ quantile-based pricing results (Q25 / Q50 / Q75) in a clear and user-friendly la
 
 Key Takeaways
 
-Realistic used car pricing behavior is captured
+Gerçekçi ikinci el araç fiyatlama davranışı başarılı şekilde modellenmiştir.
 
-Predictions are explainable at both global and individual levels
+Model tahminleri hem global hem de bireysel seviyede açıklanabilirdir.
 
-Quantile-based price ranges provide actionable guidance
+Kantil (quantile) tabanlı fiyat aralıkları, karar vericiler için aksiyon alınabilir çıktılar sunar.
 
-The system is suitable for real-world deployment
+Sistem, gerçek dünya kullanımına uygun olacak şekilde tasarlanmıştır.
 
 Next Steps
 
-Streamlit-based interactive interface
+Streamlit tabanlı interaktif kullanıcı arayüzünün geliştirilmesi
 
-Dockerization
+Uygulamanın Docker ile konteynerleştirilmesi
 
-Cloud deployment
+Bulut ortamına (cloud) deploy edilmesi
 
 Technologies Used
 
 Python
-Pandas, NumPy
+
+Pandas
+
+NumPy
+
+CatBoost
+
+SHAP
+
+FastAPI
+
+Streamlit
+
+Matplotlib
+
+Seaborn
 CatBoost
 SHAP
 FastAPI
